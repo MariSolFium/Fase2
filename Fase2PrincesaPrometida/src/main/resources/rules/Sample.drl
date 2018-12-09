@@ -358,6 +358,7 @@ end
 rule "1.10 Buttercup prometida del príncipe"
   when
   	m: Mar()
+  	des: Desempleado()
     pr: Principe(motivacion == Motivacion.ESTAR_CON_BUTTERCUP)
     bt: Buttercup( estadoSalud == EstadoSalud.VIVO )
     Westley( estadoSalud == EstadoSalud.MUERTO, ubicacionActual == m)
@@ -368,6 +369,7 @@ rule "1.10 Buttercup prometida del príncipe"
     Relacion p2 = new PrometidoDe(bt);
     modify(bt){
           addRelacion(p1),
+          setProfesion(des),
           setUbicacionActual(c);
     }
     modify(pr){
