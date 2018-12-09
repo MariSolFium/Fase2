@@ -680,3 +680,32 @@ rule "1.22 Muere Vizzini"
 		Archivo.getUnicaInstancia().addInf(v.getNombre()+ " termina " + 
 		v.getEstadoSalud().getString() + " por el venero. \n");
 end
+
+//Consultas
+rule "Consulta Quien" 
+	when 
+		con: ConsultaQuien()
+		p: Personaje (nombre == con.getNombre())
+	then
+		System.out.println(p.toString());
+		Archivo.getUnicaInstancia().escribir(p.toString() + "\n\n");
+end
+
+rule "Consulta Quien No Existe"
+	when 
+		con: ConsultaQuien()
+		not Personaje (nombre == con.getNombre)
+	then
+		System.out.println("No sé quien es " + con.getNombre() + " en el acto " + con.getActo());
+		Archivo.getUnicaInstancia().escribir("No sé quien es " + con.getNombre() + " en el acto " + con.getActo()+ "\n\n");
+end
+
+rule "Consulta Que"
+	when
+		con: ConsultaQue()
+	then
+		System.out.print("En el acto " + con.getActo().getNumActo() + "." + " ");
+		Archivo.getUnicaInstancia().escribir("En el acto " + con.getActo().getNumActo() + "." + "\n");
+		Archivo.getUnicaInstancia().escribirInf();
+		Archivo.getUnicaInstancia().escribir("\n\n");
+end
