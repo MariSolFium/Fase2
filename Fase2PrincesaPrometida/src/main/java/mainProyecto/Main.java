@@ -1,6 +1,8 @@
 package mainProyecto;
 
 import java.io.IOException;
+
+import java.util.Scanner;
 import java.util.ArrayList;
 
 import org.kie.api.KieServices;
@@ -22,8 +24,9 @@ public class Main {
 
 
 		//String filePath = "/home/norberto/input1.txt";
-		
-		String filePath = "C:\\Users\\fires\\Desktop\\Nueva\\input2.txt";
+	
+		String filePath = funcionalidadConsola();
+		//String filePath = "C:\\Users\\fires\\Desktop\\Nueva\\que.txt";
 
 		//String filePath = "C:\\Users\\maris\\Desktop\\pruebasDsint\\pruebaActo1.txt";
 		Archivo.setPath(filePath + ".output.txt");
@@ -82,4 +85,12 @@ public class Main {
 		}
 	}
 
+	private static String funcionalidadConsola() {
+		System.out.println("Inserte la ruta del fichero a tratar");
+		String cadena = "";
+		Scanner entrada = new Scanner(System.in);
+		cadena = entrada.nextLine();
+		System.out.println("Ruta recibida: "+ cadena);		
+		return cadena;
+	}
 }
